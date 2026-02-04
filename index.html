@@ -2,13 +2,32 @@
 <html>
 <head>
   <title>Just One Question ❤️</title>
+
   <style>
     body {
       background: #ffeef2;
       font-family: Arial, sans-serif;
       text-align: center;
-      padding-top: 100px;
+      padding-top: 60px;
     }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    #message {
+      font-size: 20px;
+      color: #ff4d6d;
+      margin-top: 20px;
+      min-height: 40px;
+    }
+
+    #sticker {
+      width: 180px;
+      margin-top: 10px;
+      display: none;
+    }
+
     button {
       padding: 15px 30px;
       font-size: 18px;
@@ -17,35 +36,79 @@
       cursor: pointer;
       position: absolute;
     }
+
     #yes {
       background: #ff4d6d;
       color: white;
-      left: 45%;
-      top: 300px;
+      left: 40%;
+      top: 350px;
     }
+
     #no {
       background: #999;
       color: white;
       left: 55%;
-      top: 300px;
+      top: 350px;
     }
   </style>
 </head>
 
 <body>
+
   <h1>Will you go on a date with me? 💖</h1>
 
-  <button id="yes" onclick="alert('I knew it ❤️')">YES</button>
+  <div id="message"></div>
+  <img id="sticker" />
+
+  <button id="yes" onclick="yesClicked()">YES</button>
   <button id="no">NO</button>
 
   <script>
     const noBtn = document.getElementById("no");
+    const message = document.getElementById("message");
+    const sticker = document.getElementById("sticker");
+
+    const dialogues = [
+      "Are you sure? 🥺",
+      "Nooo… Bubu is sad 💔",
+      "Nice try 😌",
+      "That option is just for decoration 😏",
+      "Okay okay… try YES now 💕"
+    ];
+
+    const stickers = [
+      "https://media.tenor.com/zGm5acSjHCIAAAAC/bubu-dudu-sad.gif",
+      "https://media.tenor.com/2roX3uxz_68AAAAC/bubu-dudu-cry.gif",
+      "https://media.tenor.com/8k3bJpN5q9kAAAAC/bubu-dudu-angry.gif",
+      "https://media.tenor.com/4wZ7Y9FQ3kAAAAAC/bubu-dudu-tease.gif",
+      "https://media.tenor.com/5k6G6ZxJp6cAAAAC/bubu-dudu-love.gif"
+    ];
+
+    let count = 0;
+
     noBtn.addEventListener("mouseover", () => {
+      message.innerText = dialogues[count % dialogues.length];
+      sticker.src = stickers[count % stickers.length];
+      sticker.style.display = "block";
+
+      count++;
+
       const x = Math.random() * window.innerWidth * 0.8;
       const y = Math.random() * window.innerHeight * 0.8;
       noBtn.style.left = x + "px";
       noBtn.style.top = y + "px";
     });
+
+    function yesClicked() {
+      document.body.innerHTML = `
+        <h1>Yayyy 🥹❤️</h1>
+        <p style="font-size:22px;color:#ff4d6d;">
+          I knew it 😌 Now you’re stuck with me 💕
+        </p>
+        <img src="https://media.tenor.com/5k6G6ZxJp6cAAAAC/bubu-dudu-love.gif" width="220">
+      `;
+    }
   </script>
+
 </body>
 </html>
