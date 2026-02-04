@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Just One Question ❤️</title>
+  <style>
+    body {
+      background: #ffeef2;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 100px;
+    }
+    button {
+      padding: 15px 30px;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      position: absolute;
+    }
+    #yes {
+      background: #ff4d6d;
+      color: white;
+      left: 45%;
+      top: 300px;
+    }
+    #no {
+      background: #999;
+      color: white;
+      left: 55%;
+      top: 300px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Will you go on a date with me? 💖</h1>
+
+  <button id="yes" onclick="alert('I knew it ❤️')">YES</button>
+  <button id="no">NO</button>
+
+  <script>
+    const noBtn = document.getElementById("no");
+    noBtn.addEventListener("mouseover", () => {
+      const x = Math.random() * window.innerWidth * 0.8;
+      const y = Math.random() * window.innerHeight * 0.8;
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+    });
+  </script>
+</body>
+</html>
