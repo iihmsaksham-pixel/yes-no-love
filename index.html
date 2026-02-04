@@ -8,73 +8,93 @@
   body {
     margin: 0;
     height: 100vh;
-    overflow: hidden;
-    background: linear-gradient(135deg, #ffdde1, #ee9ca7);
-    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #fde2e4, #fadadd);
+    font-family: 'Poppins', Arial, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
   }
 
   .card {
-    background: white;
-    padding: 30px;
-    border-radius: 20px;
+    background: #ffffff;
+    padding: 38px 30px 42px;
+    border-radius: 26px;
     text-align: center;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-    width: 320px;
+    width: 340px;
+    box-shadow: 0 20px 45px rgba(0,0,0,0.15);
     position: relative;
-    z-index: 2;
   }
 
   h1 {
-    font-size: 22px;
-    margin-bottom: 20px;
+    font-size: 28px;
+    margin-bottom: 6px;
+    color: #333;
+  }
+
+  .subtitle {
+    font-size: 17px;
+    color: #777;
+    margin-bottom: 22px;
+  }
+
+  .sorry {
+    margin-top: 14px;
+    margin-bottom: 18px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #444;
   }
 
   button {
-    padding: 10px 26px;
-    font-size: 16px;
+    padding: 13px 32px;
+    font-size: 18px;
     border: none;
     border-radius: 30px;
     cursor: pointer;
-    margin: 10px;
+    margin: 8px;
+    transition: 0.25s ease;
   }
 
   #yes {
-    background: #ff4d6d;
+    background: #ff5d8f;
     color: white;
+    box-shadow: 0 10px 22px rgba(255,93,143,0.4);
+  }
+
+  #yes:hover {
+    transform: scale(1.06);
   }
 
   #no {
-    background: #adb5bd;
-    color: black;
+    background: #e9ecef;
+    color: #333;
     position: absolute;
   }
 
   #msg {
-    margin-top: 15px;
-    font-size: 16px;
-    color: #ff4d6d;
-    min-height: 40px;
+    margin-top: 20px;
+    font-size: 19px;
+    color: #ff5d8f;
+    min-height: 52px;
   }
 
   #bubu {
-    width: 150px;
-    margin-top: 10px;
+    width: 160px;
+    margin-top: 14px;
     display: none;
   }
 
   .heart {
     position: fixed;
-    bottom: -10px;
-    font-size: 20px;
+    bottom: -20px;
+    font-size: 22px;
     animation: floatUp 6s linear infinite;
-    opacity: 0.7;
+    opacity: 0.6;
   }
 
   @keyframes floatUp {
-    from { transform: translateY(0); opacity: 0.7; }
+    from { transform: translateY(0); opacity: 0.6; }
     to { transform: translateY(-100vh); opacity: 0; }
   }
 </style>
@@ -83,13 +103,16 @@
 <body>
 
 <div class="card">
-  <h1>Mishtuu 💖<br>Do you love me?</h1>
+  <h1>Mishtuu 💖</h1>
+  <div class="subtitle">Do you love me?</div>
 
-  <button id="yes">YES 😍</button>
+  <div class="sorry"><b>sorry for hurting you 🥺</b></div>
+
+  <button id="yes">YES 💗</button>
   <button id="no">NO 🙄</button>
 
   <div id="msg"></div>
-  <img id="bubu" src="https://media.tenor.com/2roX3uxz_68AAAAi/bubu-dudu.gif">
+  <img id="bubu" src="https://i.pinimg.com/originals/1e/8e/0c/1e8e0c2f07a30b7c62e89a5cce3a02b4.gif">
 </div>
 
 <script>
@@ -100,36 +123,39 @@
 
   const messages = [
     "pleaseee mishtuu don’t say no 🥺💗",
-    "itna bhi gussa mat ho na 😭",
-    "bubu ko chot lag gayi 🐻💔",
-    "pav bhaji khilaunga 😋🍽️ YES dabao",
-    "bas ab aur nahi… YES bol do 💕"
+    "thoda sa pyaar toh banta hai na 😔",
+    "bubu sad ho raha hai 🐻💔",
+    "itna bhi gussa mat ho 😭",
+    "pav bhaji khilaunga 😋🍽️ YES dabao"
   ];
 
   let count = 0;
 
   noBtn.addEventListener("mouseover", () => {
-    noBtn.style.top = Math.random() * 80 + "%";
-    noBtn.style.left = Math.random() * 80 + "%";
+    noBtn.style.top = Math.random() * 75 + "%";
+    noBtn.style.left = Math.random() * 75 + "%";
   });
 
   noBtn.addEventListener("click", () => {
-    msg.innerText = messages[count];
-    bubu.style.display = "block";
-    count++;
-
-    if (count >= messages.length) {
+    if (count < messages.length) {
+      msg.innerText = messages[count];
+      bubu.style.display = "block";
+      count++;
+    } else {
       noBtn.style.display = "none";
-      msg.innerText = "Ab bas 😤💖 NO option khatam…";
+      msg.innerText = "ab NO ka option hi nahi bacha 😌💖";
     }
   });
 
   yesBtn.addEventListener("click", () => {
     document.body.innerHTML = `
-      <div style="text-align:center;color:white;">
-        <h1 style="font-size:32px;">I knew it Mishtuu 😘💖</h1>
-        <p style="font-size:20px;">Pav bhaji pakki 😋🍽️<br>You’re mine forever 💞</p>
-        <img src="https://media.tenor.com/5k6G6ZxJp6cAAAAC/bubu-dudu-love.gif" width="220">
+      <div style="text-align:center;">
+        <h1 style="font-size:34px;color:#ff5d8f;">I knew it Mishtuu 🥰</h1>
+        <p style="font-size:20px;color:#444;">
+          Pav bhaji pakki 😋🍽️<br>
+          You’re mine forever 💞
+        </p>
+        <img src="https://i.pinimg.com/originals/1e/8e/0c/1e8e0c2f07a30b7c62e89a5cce3a02b4.gif" width="220">
       </div>
     `;
   });
@@ -143,7 +169,7 @@
     document.body.appendChild(heart);
 
     setTimeout(() => heart.remove(), 6000);
-  }, 500);
+  }, 600);
 </script>
 
 </body>
