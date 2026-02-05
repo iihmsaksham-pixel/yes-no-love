@@ -2,73 +2,77 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<title>For Mishtuu 💖</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Only for Mishtuu 💖</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<!-- Cute Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap" rel="stylesheet">
 
 <style>
-body {
-  margin: 0;
-  height: 100vh;
-  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Poppins', sans-serif;
-  color: #222;
+body{
+  margin:0;
+  height:100vh;
+  font-family:'Poppins', sans-serif;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,#ffdde1,#ee9ca7);
+  overflow:hidden;
 }
 
-.container {
-  text-align: center;
-  padding: 20px;
+.container{
+  text-align:center;
+  padding:20px;
 }
 
-h1 {
-  font-size: 28px;
-  margin-bottom: 10px;
+h1{
+  font-size:2.2rem;
+  color:#fff;
+  text-shadow:0 4px 10px rgba(0,0,0,.2);
 }
 
-#message {
-  font-size: 18px;
-  margin-bottom: 15px;
-  min-height: 40px;
+#message{
+  margin-top:15px;
+  font-size:1.3rem;
+  color:#fff;
+  min-height:60px;
 }
 
-.sorry {
-  font-size: 22px;
-  font-weight: 700;
-  margin: 15px 0;
+img{
+  width:220px;
+  margin-top:15px;
+  border-radius:20px;
 }
 
-.gif img {
-  width: 220px;
-  max-width: 80%;
-  border-radius: 12px;
+.buttons{
+  margin-top:25px;
 }
 
-.buttons {
-  margin-top: 20px;
+button{
+  font-size:1.2rem;
+  padding:12px 26px;
+  border:none;
+  border-radius:30px;
+  cursor:pointer;
+  margin:10px;
+  transition:.3s;
 }
 
-button {
-  font-size: 18px;
-  padding: 10px 22px;
-  margin: 8px;
-  border: none;
-  border-radius: 25px;
-  cursor: pointer;
+#yes{
+  background:#ff4d6d;
+  color:white;
 }
 
-#yesBtn {
-  background: #ff4d6d;
-  color: white;
+#no{
+  background:white;
+  color:#ff4d6d;
 }
 
-#noBtn {
-  background: #444;
-  color: white;
+#sorry{
+  margin-top:30px;
+  font-size:1.4rem;
+  font-weight:700;
+  color:#fff;
 }
 </style>
 </head>
@@ -76,53 +80,67 @@ button {
 <body>
 
 <div class="container">
+  <h1>Mishtuu, will you say YES? 🥺💗</h1>
 
-<h1>Mishtuu 🥺💗</h1>
+  <div id="message"></div>
+  <img id="gif" src="" style="display:none">
 
-<div id="message">Pleaseee mishtuuu don’t say no 🥺</div>
+  <div class="buttons">
+    <button id="yes" onclick="yesClicked()">YES 💖</button>
+    <button id="no" onclick="noClicked()">NO 😭</button>
+  </div>
 
-<div class="sorry">Sorry for hurting you 🥺</div>
-
-<div class="gif">
-  <img id="gifImg" 
-  src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOXFhbW5sY2o3Y2Z3cHRxczZlY2V6M2ZtZ2s0aG9oM3JtN3U3ZHR5ZyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/qQdL532ZANbjy/giphy.gif">
-</div>
-
-<div class="buttons">
-  <button id="yesBtn" onclick="yesClick()">YES 💖</button>
-  <button id="noBtn" onclick="noClick()">NO 🙃</button>
-</div>
-
+  <div id="sorry">Sorry for hurting you 🥺</div>
 </div>
 
 <script>
-let noCount = 0;
+let count = 0;
 
-const noMessages = [
-  "Pleaseee mishtuuu don’t say no 🥺",
-  "Sach me bohot pyaar karta hoon 💗",
-  "Ek chance aur dedo na 🥺",
-  "Pav bhaji khilaunga… yes dabao 😭",
-  "Aakhri baar pleaseee 🥺💔"
+const noTexts = [
+  "Pleaseeee Mishtuuu 🥺",
+  "Aise mana mat karo jaan 💔",
+  "Dil toot raha hai 😭",
+  "Last baar soch lo na 💗",
+  "Pav bhaji khilaunga, YES dabao 😋"
 ];
 
-function noClick() {
-  if (noCount < noMessages.length) {
-    document.getElementById("message").innerText = noMessages[noCount];
-    noCount++;
-  } else {
-    document.getElementById("noBtn").style.display = "none";
+const gifs = [
+  "https://media.tenor.com/2roX3uxz_68AAAAC/bubu-dudu-sad.gif",
+  "https://media.tenor.com/J7JxZ3qk8XcAAAAC/bubu-dudu-cry.gif",
+  "https://media.tenor.com/5H6kOq6Tn1QAAAAC/bubu-dudu-love.gif",
+  "https://media.tenor.com/9bQkW6z5kZAAAAAC/bubu-dudu-please.gif",
+  "https://media.tenor.com/wfEN4VZxZk8AAAAC/bubu-dudu-kiss.gif"
+];
+
+function noClicked(){
+  if(count < noTexts.length){
+    document.getElementById("message").innerText = noTexts[count];
+    document.getElementById("gif").src = gifs[count];
+    document.getElementById("gif").style.display = "block";
+    count++;
+  }else{
+    document.getElementById("no").style.display = "none";
+    document.getElementById("message").innerText = "I knew it Mishtuu 😘💞";
+    document.getElementById("gif").src =
+      "https://media.tenor.com/1J6HkzZlKzUAAAAC/bubu-dudu-hug.gif";
   }
 }
 
-function yesClick() {
+function yesClicked(){
   document.body.innerHTML = `
-    <div style="text-align:center;font-family:Poppins;">
-      <h1>I knew it Mishtuu 🥹💞</h1>
-      <p>Pav bhaji pakki 😎🍽️</p>
-      <p>You’re mine forever 💍</p>
-      <img src="https://media.giphy.com/media/l0MYB8Ory7Hqefo9a/giphy.gif" 
-           style="width:250px;border-radius:15px;">
+    <div style="
+      height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex-direction:column;
+      background:linear-gradient(135deg,#fbc2eb,#a6c1ee);
+      font-family:Poppins;
+      color:white;
+      text-align:center;">
+      <h1 style="font-size:2.5rem;">I knew it Mishtuu 💖</h1>
+      <img src="https://media.tenor.com/wfEN4VZxZk8AAAAC/bubu-dudu-kiss.gif" width="250">
+      <p style="font-size:1.4rem;">You're mine forever 💞</p>
     </div>
   `;
 }
